@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario - Cambio de Aceite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f8;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #006c4f;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 2rem;
+      width: 100%;
+      background: #006c4f;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00573c;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 2rem;
+      text-align: center;
+      width: 100%;
+      color: #006c4f;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Formulario: Cambio de Aceite</h1>
+    <form id="formCambioAceite">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez" />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required pattern="[0-9+\s-]{8,}" placeholder="Ej. 55 1234 5678" />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="Ej. juan@mail.com" />
+
+      <label for="vehiculo">Marca y modelo del vehículo:</label>
+      <input type="text" id="vehiculo" name="vehiculo" required placeholder="Ej. Toyota Corolla 2020" />
+
+      <label for="tipoAceite">Tipo de aceite:</label>
+      <select id="tipoAceite" name="tipoAceite" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="mineral">Mineral</option>
+        <option value="semisintetico">Semisintético</option>
+        <option value="sintetico">Sintético</option>
+      </select>
+
+      <label for="kilometraje">Kilometraje actual:</label>
+      <input type="number" id="kilometraje" name="kilometraje" required placeholder="Ej. 45000" />
+
+      <label for="fecha">Fecha deseada para el servicio:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <label for="comentarios">Comentarios adicionales (opcional):</label>
+      <textarea id="comentarios" name="comentarios" rows="4" placeholder="Especificaciones, ruidos, observaciones, etc."></textarea>
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+
+    <a href="index.html" class="volver">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById('formCambioAceite').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      alert('¡Gracias! Tu solicitud ha sido enviada correctamente.');
+
+      // Puedes aquí agregar código para enviar los datos a un servidor,
+      // guardar en localStorage o generar un archivo .txt si lo deseas.
+      
+      this.reset(); // limpia el formulario
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario - Servicio de Frenos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f8;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #8b0000;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 2rem;
+      width: 100%;
+      background: #8b0000;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6c0000;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 2rem;
+      text-align: center;
+      width: 100%;
+      color: #8b0000;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Formulario: Servicio de Frenos</h1>
+    <form id="formFrenos">
+
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Ej. Laura Ríos" />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required pattern="[0-9+\s-]{8,}" placeholder="Ej. 55 9876 5432" />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="Ej. laura@mail.com" />
+
+      <label for="vehiculo">Marca y modelo del vehículo:</label>
+      <input type="text" id="vehiculo" name="vehiculo" required placeholder="Ej. Nissan Versa 2016" />
+
+      <label for="servicioFrenos">¿Qué servicio necesitas?</label>
+      <select id="servicioFrenos" name="servicioFrenos" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="rectificado">Rectificado de discos</option>
+        <option value="cambio-balatas">Cambio de balatas</option>
+        <option value="purga">Purga de líneas</option>
+        <option value="inspeccion">Inspección general</option>
+      </select>
+
+      <label for="ruidos">¿El vehículo presenta ruidos al frenar?</label>
+      <select id="ruidos" name="ruidos" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="no">No</option>
+        <option value="si-metalico">Sí, sonido metálico</option>
+        <option value="si-agudo">Sí, chillido agudo</option>
+      </select>
+
+      <label for="frenado">¿Notas problemas de frenado?</label>
+      <textarea id="frenado" name="frenado" rows="4" placeholder="Ej. Pedal esponjoso, el auto se va a un lado, etc."></textarea>
+
+      <label for="fecha">Fecha deseada para revisión:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+
+    <a href="index.html" class="volver">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById('formFrenos').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias! Hemos recibido tu solicitud de servicio de frenos.');
+      this.reset(); // Limpia el formulario
+    });
+  </script>
+</body>
+</html>

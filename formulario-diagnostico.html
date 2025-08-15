@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario - Diagnóstico de Auto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f8;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 2rem;
+      width: 100%;
+      background: #003366;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #002244;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 2rem;
+      text-align: center;
+      width: 100%;
+      color: #003366;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Formulario: Diagnóstico del Auto</h1>
+    <form id="formDiagnostico">
+
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carla Gómez" />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required pattern="[0-9+\s-]{8,}" placeholder="Ej. 55 1234 5678" />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="Ej. carla@mail.com" />
+
+      <label for="vehiculo">Marca y modelo del vehículo:</label>
+      <input type="text" id="vehiculo" name="vehiculo" required placeholder="Ej. Mazda 3 2018" />
+
+      <label for="motor">Tipo de motor:</label>
+      <select id="motor" name="motor" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="gasolina">Gasolina</option>
+        <option value="diesel">Diésel</option>
+        <option value="hibrido">Híbrido</option>
+        <option value="electrico">Eléctrico</option>
+      </select>
+
+      <label for="problema">Descripción del problema:</label>
+      <textarea id="problema" name="problema" rows="4" required placeholder="Describe los síntomas, ruidos, luces del tablero, comportamiento extraño, etc."></textarea>
+
+      <label for="luces">¿Se enciende alguna luz en el tablero?</label>
+      <select id="luces" name="luces" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="no">No</option>
+        <option value="check-engine">Sí, Check Engine</option>
+        <option value="abs">Sí, ABS</option>
+        <option value="airbag">Sí, Airbag</option>
+        <option value="otra">Sí, otra</option>
+      </select>
+
+      <label for="fecha">Fecha deseada para revisión:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+
+    <a href="index.html" class="volver">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById('formDiagnostico').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      alert('¡Gracias! Hemos recibido tu solicitud de diagnóstico.');
+      this.reset(); // Limpia el formulario después de enviar
+    });
+  </script>
+</body>
+</html>

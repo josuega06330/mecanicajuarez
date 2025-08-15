@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario - Servicio de Suspensión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e3a59;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 2rem;
+      width: 100%;
+      background: #2e3a59;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d273e;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-align: center;
+      width: 100%;
+      color: #2e3a59;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Servicio de Suspensión</h1>
+    <form id="formSuspension">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Gómez" />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required pattern="[0-9+\s-]{8,}" placeholder="Ej. 55 1234 5678" />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com" />
+
+      <label for="vehiculo">Marca y modelo del vehículo:</label>
+      <input type="text" id="vehiculo" name="vehiculo" required placeholder="Ej. Toyota Corolla 2020" />
+
+      <label for="tipoServicio">¿Qué parte deseas revisar?</label>
+      <select id="tipoServicio" name="tipoServicio" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="amortiguadores">Amortiguadores</option>
+        <option value="horquillas">Horquillas</option>
+        <option value="alineacion">Alineación</option>
+        <option value="revision-completa">Revisión completa</option>
+      </select>
+
+      <label for="sintomas">¿Qué síntomas presenta tu vehículo?</label>
+      <textarea id="sintomas" name="sintomas" rows="4" placeholder="Ej. Sonido metálico al pasar topes, vibración al girar, se ladea, etc."></textarea>
+
+      <label for="fecha">Fecha deseada para la cita:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <button type="submit">Agendar revisión</button>
+    </form>
+
+    <a href="index.html" class="volver">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById('formSuspension').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias! Tu solicitud de revisión de suspensión ha sido registrada.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

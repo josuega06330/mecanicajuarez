@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taller Mecánico Juarez</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <meta name="description" content="Taller mecánico con servicio integral: diagnósticos, mantenimiento, frenos, suspensión y más. Reserva tu cita en línea.">
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#inicio">
+        <span class="logo-icon">🔧</span>
+        <span class="logo-text">Mecánica Juarez</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="…
+[9:03 AM, 8/14/2025] Josue: :root{
+  --bg:#0f1225;
+  --card:#161a34;
+  --muted:#8aa0b5;
+  --text:#e9f1f7;
+  --brand:#34c759;      /* verde */
+  --brand-2:#2bb1ff;    /* azul */
+  --accent:#ffb020;     /* ámbar */
+  --danger:#ff4d4f;
+  --radius:20px;
+  --shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;scroll-behavior:smooth}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,#0b0e1b 0%, var(--bg) 100%);
+}
+
+/* Layout helpers */
+.container{width:min(1100px,92%);margin-inline:auto}
+.grid{display:grid;gap:1.2rem}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards{grid-template-columns:repeat(auto-fit,minma…
+[9:05 AM, 8/14/2025] Josue: // Utilidades
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+/* ===== Navegación móvil ===== */
+const nav = $('#mainNav');
+$('#navToggle').addEventListener('click', () => nav.classList.toggle('show'));
+$$('#mainNav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('show')));
+
+/* ===== Footer año ===== */
+$('#year').textContent = new Date().getFullYear();
+
+/* ====== Formulario Citas: validación, guardado y descarga .txt ====== */
+const formCita = $('#formCita');
+const tablaWrap = $('#tablaCitasWrap');
+const tabla = $('#tablaCitas');
+
+const STORAGE_KEY = 'citas-mecanica';
+
+function leerCitas() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KE…
+[9:00 AM, 8/15/2025] Josue: <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taller Mecánico Rápido & Seguro</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <meta name="description" content="Taller mecánico con servicio integral: diagnósticos, mantenimiento, frenos, suspensión y más. Reserva tu cita en línea.">
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#inicio">
+        <span class="logo-icon">🔧</span>
+        <span class="logo-text">Mecánica Pro</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#taller">Nuestro Taller</a>
+        <a href="#citas">Citas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Mecánica confiable, a tiempo y con garantía</h1>
+        <p>Diagnóstico computarizado, mantenimiento preventivo y correctivo. ¡Tu auto en manos expertas!</p>
+        <a class="btn btn-primary" href="#citas">Reserva una cita</a>
+      </div>
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1400&auto=format&fit=crop"
+          alt="Mecánico trabajando en un automóvil">
+      </div>
+    </div>
+  </section>
+
+<!-- Servicios -->
+<section id="servicios" class="section">
+  <div class="container">
+    <h2 class="section-title">Servicios</h2>
+    <p class="section-subtitle">Atendemos todas las marcas. Refacciones originales y garantía por escrito.</p>
+    <div class="grid cards">
+
+      <article class="card">
+        <img src="cambio aceite.jpg" alt="Cambio de aceite">
+        <div class="card-body">
+          <h3>Cambio de Aceite</h3>
+          <p>Lubricantes sintéticos y revisión de 15 puntos.</p>
+          <a href="formulario-aceite.html" class="btn-seleccionar-servicio">Ir al formulario</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="freno.jpg" alt="Frenos">
+        <div class="card-body">
+          <h3>Frenos</h3>
+          <p>Rectificado, cambio de balatas y purga de líneas.</p>
+          <a href="formulario-frenos.html" class="btn-seleccionar-servicio">Ir al formulario</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="suspension.jpg" alt="Suspensión">
+        <div class="card-body">
+          <h3>Suspensión</h3>
+          <p>Amortiguadores, horquillas y alineación.</p>
+          <a href="formulario-suspension.html" class="btn-seleccionar-servicio">Ir al formulario</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="escaner obd.jpeg" alt="Diagnóstico">
+        <div class="card-body">
+          <h3>Diagnóstico</h3>
+          <p>Escáner OBD-II y pruebas eléctricas completas.</p>
+          <a href="formulario-diagnostico.html" class="btn-seleccionar-servicio">Ir al formulario</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Taller -->
+  <section id="taller" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Nuestro Taller</h2>
+      <div class="grid two">
+        <div>
+          <p>Instalaciones limpias, equipo de última generación y técnicos certificados. Nos enfocamos en seguridad, transparencia y trato honesto.</p>
+          <ul class="checklist">
+            <li>Atención de lunes a sábado</li>
+            <li>Entrega el mismo día para servicios básicos</li>
+            <li>Garantía de 3 meses o 5,000 km</li>
+          </ul>
+        </div>
+        <figure class="photo-stack">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop" alt="Bahía de servicio">
+          <img src="https://images.unsplash.com/photo-1516239322118-4c1118f35842?q=80&w=1200&auto=format&fit=crop" alt="Elevador hidráulico">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citas / Formulario funcional con guardado y .txt -->
+  <section id="citas" class="section">
+    <div class="container">
+      <h2 class="section-title">Agenda tu servicio</h2>
+      <p class="section-subtitle">Completa el formulario. Se guarda en tu navegador y puedes descargar un <strong>.txt</strong> con los datos.</p>
+
+      <form id="formCita" class="form card" autocomplete="on" novalidate>
+        <div class="grid two">
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" required placeholder="Ej. Ana Pérez">
+            <small class="error"></small>
+          </div>
+
+          <div class="field">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" required pattern="[0-9+\s-]{8,}" placeholder="55 1234 5678">
+            <small class="error"></small>
+          </div>
+
+          <div class="field">
+            <label for="email">Correo</label>
+            <input id="email" name="email" type="email" required placeholder="ana@mail.com">
+            <small class="error"></small>
+          </div>
+
+          <div class="field">
+            <label for="fecha">Fecha</label>
+            <input id="fecha" name="fecha" type="date" required>
+            <small class="error"></small>
+          </div>
+
+          <div class="field">
+            <label for="auto">Vehículo</label>
+            <input id="auto" name="auto" type="text" required placeholder="Marca y modelo">
+            <small class="error"></small>
+          </div>
+
+          <div class="field">
+            <label for="servicio">Servicio</label>
+            <select id="servicio" name="servicio" required>
+              <option value="" selected disabled>Selecciona…</option>
+              <option value="aceite">Cambio de aceite</option>
+              <option value="frenos">Frenos</option>
+              <option value="suspension">Suspensión</option>
+              <option value="diagnostico">Diagnóstico</option>
+            </select>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="detalle">Detalle del problema</label>
+          <textarea id="detalle" name="detalle" rows="4" placeholder="Describe ruidos, luces del tablero, etc."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Guardar cita</button>
+          <button type="button" id="btnDescargar" class="btn">Descargar .txt</button>
+          <button type="reset" class="btn btn-ghost">Limpiar</button>
+        </div>
+
+        <p class="help">* Los datos se almacenan en <em>localStorage</em> en tu navegador para consulta posterior.</p>
+      </form>
+
+      <div class="card table-wrap" id="tablaCitasWrap" hidden>
+        <h3>Mis citas guardadas</h3>
+        <table id="tablaCitas" class="table"></table>
+      </div>
+    </div>
+  </section>
+
+<!-- Contacto -->
+<section id="contacto" class="section alt">
+  <div class="container">
+    <h2 class="section-title">Contacto</h2>
+    <div class="grid two">
+
+      <!-- Formulario funcional con Formspree -->
+      <form id="formContacto" class="form card" action="https://formspree.io/f/mldlvvdb" method="POST">
+        <div class="field">
+          <label for="cNombre">Nombre</label>
+          <input id="cNombre" name="nombre" type="text" required>
+        </div>
+
+        <div class="field">
+          <label for="cEmail">Correo</label>
+          <input id="cEmail" name="email" type="email" required>
+        </div>
+
+        <div class="field">
+          <label for="cMensaje">Mensaje</label>
+          <textarea id="cMensaje" name="message" rows="5" required></textarea>
+        </div>
+
+        <!-- Campo oculto para mostrar de dónde viene el mensaje -->
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde Mecánica Pro">
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+
+      <aside class="contact-info card">
+        <h3>Visítanos</h3>
+        <p>Av. Motor 123, Col. Pistones<br>Ciudad, País</p>
+        <p><strong>Horarios:</strong> Lun–Sáb 9:00–18:00</p>
+        <p><strong>Tel:</strong> 55 5555 5555</p>
+        <img src="lamborghini.jpg" alt="Fachada del taller">
+      </aside>
+    </div>
+  </div>
+</section>
