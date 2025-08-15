@@ -182,76 +182,126 @@ function leerCitas() {
   </section>
 
   <!-- Citas / Formulario funcional con guardado y .txt -->
-  <section id="citas" class="section">
-    <div class="container">
-      <h2 class="section-title">Agenda tu servicio</h2>
-      <p class="section-subtitle">Completa el formulario. Se guarda en tu navegador y puedes descargar un <strong>.txt</strong> con los datos.</p>
-
-      <form id="formCita" class="form card" autocomplete="on" novalidate>
-        <div class="grid two">
-          <div class="field">
-            <label for="nombre">Nombre completo</label>
-            <input id="nombre" name="nombre" type="text" required placeholder="Ej. Ana Pérez">
-            <small class="error"></small>
-          </div>
-
-          <div class="field">
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel" required pattern="[0-9+\s-]{8,}" placeholder="55 1234 5678">
-            <small class="error"></small>
-          </div>
-
-          <div class="field">
-            <label for="email">Correo</label>
-            <input id="email" name="email" type="email" required placeholder="ana@mail.com">
-            <small class="error"></small>
-          </div>
-
-          <div class="field">
-            <label for="fecha">Fecha</label>
-            <input id="fecha" name="fecha" type="date" required>
-            <small class="error"></small>
-          </div>
-
-          <div class="field">
-            <label for="auto">Vehículo</label>
-            <input id="auto" name="auto" type="text" required placeholder="Marca y modelo">
-            <small class="error"></small>
-          </div>
-
-          <div class="field">
-            <label for="servicio">Servicio</label>
-            <select id="servicio" name="servicio" required>
-              <option value="" selected disabled>Selecciona…</option>
-              <option value="aceite">Cambio de aceite</option>
-              <option value="frenos">Frenos</option>
-              <option value="suspension">Suspensión</option>
-              <option value="diagnostico">Diagnóstico</option>
-            </select>
-            <small class="error"></small>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="detalle">Detalle del problema</label>
-          <textarea id="detalle" name="detalle" rows="4" placeholder="Describe ruidos, luces del tablero, etc."></textarea>
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Guardar cita</button>
-          <button type="button" id="btnDescargar" class="btn">Descargar .txt</button>
-          <button type="reset" class="btn btn-ghost">Limpiar</button>
-        </div>
-
-        <p class="help">* Los datos se almacenan en <em>localStorage</em> en tu navegador para consulta posterior.</p>
-      </form>
-
-      <div class="card table-wrap" id="tablaCitasWrap" hidden>
-        <h3>Mis citas guardadas</h3>
-        <table id="tablaCitas" class="table"></table>
-      </div>
+ <form
+  id="formCita"
+  class="form card"
+  action="https://formspree.io/f/xdkdjjek"
+  method="POST"
+  autocomplete="on"
+  novalidate
+>
+  <div class="grid two">
+    <div class="field">
+      <label for="nombre">Nombre completo</label>
+      <input id="nombre" name="nombre" type="text" required placeholder="Ej. Ana Pérez">
     </div>
-  </section>
+
+    <div class="field">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" name="telefono" type="tel" required pattern="[0-9+\s-]{8,}" placeholder="55 1234 5678">
+    </div>
+
+    <div class="field">
+      <label for="email">Correo</label>
+      <input id="email" name="email" type="email" required placeholder="ana@mail.com">
+    </div>
+
+    <div class="field">
+      <label for="fecha">Fecha</label>
+      <input id="fecha" name="fecha" type="date" required>
+    </div>
+
+    <div class="field">
+      <label for="auto">Vehículo</label>
+      <input id="auto" name="auto" type="text" required placeholder="Marca y modelo">
+    </div>
+
+    <div class="field">
+      <label for="servicio">Servicio</label>
+      <select id="servicio" name="servicio" required>
+        <option value="" selected disabled>Selecciona…</option>
+        <option value="aceite">Cambio de aceite</option>
+        <option value="frenos">Frenos</option>
+        <option value="suspension">Suspensión</option>
+        <option value="diagnostico">Diagnóstico</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="detalle">Detalle del problema</label>
+    <textarea id="detalle" name="detalle" rows="4" placeholder="Describe ruidos, luces del tablero, etc."></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Enviar y guardar cita</button>
+    <button type="button" id="btnDescargar" class="btn">Descargar .txt</button>
+    <button type="reset" class="btn btn-ghost">Limpiar</button>
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formCita");
+    const btnDescargar = document.getElementById("btnDescargar");
+
+    // Mostrar citas guardadas al cargar
+    mostrarCitas();
+
+    // Guardar cita en localStorage al enviar (sin bloquear Formspree)
+    form.addEventListener("submit", function () {
+      const cita = {
+        nombre: form.nombre.value,
+        telefono: form.telefono.value,
+        email: form.email.value,
+        fecha: form.fecha.value,
+        auto: form.auto.value,
+        servicio: form.servicio.value,
+        detalle: form.detalle.value
+      };
+
+      let citas = JSON.parse(localStorage.getItem("citas")) || [];
+      citas.push(cita);
+      localStorage.setItem("citas", JSON.stringify(citas));
+    });
+
+    // Descargar agenda completa como archivo .txt
+    btnDescargar.addEventListener("click", function () {
+      const citas = JSON.parse(localStorage.getItem("citas")) || [];
+      if (citas.length === 0) {
+        alert("No hay citas guardadas.");
+        return;
+      }
+
+      let contenido = "📅 AGENDA DE CITAS\n\n";
+      citas.forEach((cita, i) => {
+        contenido += `Cita #${i + 1}\n`;
+        contenido += `Nombre: ${cita.nombre}\n`;
+        contenido += `Teléfono: ${cita.telefono}\n`;
+        contenido += `Correo: ${cita.email}\n`;
+        contenido += `Fecha: ${cita.fecha}\n`;
+        contenido += `Vehículo: ${cita.auto}\n`;
+        contenido += `Servicio: ${cita.servicio}\n`;
+        contenido += `Detalle: ${cita.detalle}\n`;
+        contenido += `-----------------------------\n`;
+      });
+
+      const blob = new Blob([contenido], { type: "text/plain" });
+      const enlace = document.createElement("a");
+      enlace.href = URL.createObjectURL(blob);
+      enlace.download = "agenda_citas.txt";
+      enlace.click();
+    });
+
+    // Mostrar citas en consola (opcional)
+    function mostrarCitas() {
+      const citas = JSON.parse(localStorage.getItem("citas")) || [];
+      console.log("Citas guardadas:", citas);
+    }
+  });
+</script>
+
+  <p class="help">* Los datos se envían por correo y también se almacenan en <em>localStorage</em> para consulta posterior.</p>
+</form>
+
 
 <!-- Contacto -->
 <section id="contacto" class="section alt">
